@@ -74,6 +74,6 @@ void UPFUIKeyIcon::UpdateSymbol() const
     if (Image_Symbol)
     {
         TSoftObjectPtr<UTexture2D> Symbol = GetDefault<UPFKeySettings>()->GetSymbol(Key);
-        Image_Symbol->SetBrushFromSoftTexture(Symbol);
+        Image_Symbol->SetBrushFromSoftTexture(Symbol, true);
     }
 }
