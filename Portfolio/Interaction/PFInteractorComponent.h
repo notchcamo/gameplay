@@ -41,7 +41,7 @@ private:
     /**
      * Interaction target
      */
-    UPROPERTY(VisibleAnywhere, Category="Interaction")
+    UPROPERTY()
     TWeakObjectPtr<UPFInteractionComponent> Target;
 
     // Trace option
