@@ -81,49 +81,33 @@ void UPFInteractorComponent::UpdateTarget()
     
     if (HitInteraction)
     {
-        bool bTargetChanged = false;
-        
-        if (Target.IsValid())
+        if (Target.IsValid() && Target != HitInteraction && Target->IsInteractionInProgress())
         {
-            if (Target != HitInteraction)
-            {
-                if (Target->IsInteractionInProgress())
-                {
-                    Target->FinishInteraction();
-                }
-
-                Target = HitInteraction;
-                bTargetChanged = true;
-            }
-        }
-        else
-        {
-            Target = HitInteraction;
-            bTargetChanged = true;
+            Target->FinishInteraction();
         }
 
-        if (bTargetChanged && OnInteractionTargetAdded.IsBound())
+        const bool bHasTargetChanged = !Target.IsValid() || Target != HitInteraction;
+        Target = HitInteraction;
+
+        if (bHasTargetChanged && OnInteractionTargetAdded.IsBound())
         {
             OnInteractionTargetAdded.Broadcast();
         }
             
         UE_LOGFMT(LogPFInteraction, Log, "New interaction target found. ({0})", HitResult.GetActor()->GetActorLabel());
     }
-    else
+    else if (Target.IsValid())
     {
-        if (Target.IsValid())
+        if (Target->IsInteractionInProgress())
         {
-            if (Target->IsInteractionInProgress())
-            {
-                Target->FinishInteraction();
-            }
-            
-            Target.Reset();
+            Target->FinishInteraction();
+        }
+        
+        Target.Reset();
 
-            if (OnInteractionTargetRemoved.IsBound())
-            {
-                OnInteractionTargetRemoved.Broadcast();
-            }
+        if (OnInteractionTargetRemoved.IsBound())
+        {
+            OnInteractionTargetRemoved.Broadcast();
         }
     }
     
