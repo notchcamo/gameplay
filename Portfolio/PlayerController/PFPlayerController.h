@@ -15,6 +15,6 @@ public:
     APFPlayerController();
 
 protected:
-    UPROPERTY()
+    UPROPERTY(Transient)
     TObjectPtr<UPFInventoryComponent> Inventory;
 };
