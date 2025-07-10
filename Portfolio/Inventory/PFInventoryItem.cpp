@@ -4,7 +4,7 @@
 
 UPFInventoryItem* UPFInventoryItem::CreateItem(const FPFTemplateId TID, const UWorld* WorldContext)
 {
-    if (!WorldContext)
+    if (!WorldContext || !TID.IsValid())
     {
         return nullptr;
     }
