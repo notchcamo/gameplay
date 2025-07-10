@@ -14,6 +14,8 @@ class PORTFOLIO_API APFPlayerController : public APlayerController
 public:
     APFPlayerController();
 
+    UPFInventoryComponent* GetInventory() const { return Inventory; }
+
 protected:
     UPROPERTY(Transient)
     TObjectPtr<UPFInventoryComponent> Inventory;
