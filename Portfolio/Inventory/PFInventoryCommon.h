@@ -2,5 +2,7 @@
 
 #include "CoreMinimal.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(LogPFInventory, Log, All);
+
 using ItemUID = uint32;
 using ItemTID = uint32;
