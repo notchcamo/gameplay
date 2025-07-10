@@ -5,7 +5,6 @@
 #include "Components/ActorComponent.h"
 #include "PFInventoryComponent.generated.h"
 
-
 class UPFInventoryItem;
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))

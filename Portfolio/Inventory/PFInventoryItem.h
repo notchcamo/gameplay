@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "PFInventoryCommon.h"
+#include "Common/PFTemplateId.h"
 #include "UObject/Object.h"
 #include "PFInventoryItem.generated.h"
 
@@ -11,12 +12,14 @@ class PORTFOLIO_API UPFInventoryItem : public UObject
     GENERATED_BODY()
 
 public:
-    static UPFInventoryItem* CreateItem(const ItemTID TID, const UWorld* WorldContext);
+    static UPFInventoryItem* CreateItem(const FPFTemplateId TID, const UWorld* WorldContext);
     
     FORCEINLINE ItemUID GetUID() const { return UID; }
-    FORCEINLINE ItemTID GetTID() const { return TID; }
+    FORCEINLINE FPFTemplateId GetTID() const { return TID; }
 
 protected:
     ItemUID UID;
-    ItemTID TID;
+
+    UPROPERTY(Transient)
+    FPFTemplateId TID;
 };

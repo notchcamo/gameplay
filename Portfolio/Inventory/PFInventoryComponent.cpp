@@ -15,7 +15,7 @@ void UPFInventoryComponent::ObtainItem(UPFInventoryItem* Item)
     {
         Items.AddUnique(Item);
 
-        UE_LOGFMT(LogPFInventory, Log, "Item obtained. UID: {0}, TID: {1}", Item->GetUID(), Item->GetTID());
+        UE_LOGFMT(LogPFInventory, Log, "Item obtained. UID: {0}, TID: {1}", Item->GetUID(), Item->GetTID().ToString());
     }
 }
 
@@ -29,10 +29,10 @@ void UPFInventoryComponent::RemoveItem(ItemUID UID)
     if (FoundItem)
     {
         const ItemUID ItemUID = (*FoundItem)->GetUID();
-        const ItemTID ItemTID = (*FoundItem)->GetTID();
+        const FPFTemplateId ItemTID = (*FoundItem)->GetTID();
         
         Items.Remove(*FoundItem);
         
-        UE_LOGFMT(LogPFInventory, Log, "Item removed. UID: {}, TID: {}", ItemUID, ItemTID);
+        UE_LOGFMT(LogPFInventory, Log, "Item removed. UID: {0}, TID: {1}", ItemUID, ItemTID.ToString());
     }
 }

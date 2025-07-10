@@ -2,7 +2,7 @@
 
 #include "GameInstance/PFGameInstance.h"
 
-UPFInventoryItem* UPFInventoryItem::CreateItem(const ItemTID TID, const UWorld* WorldContext)
+UPFInventoryItem* UPFInventoryItem::CreateItem(const FPFTemplateId TID, const UWorld* WorldContext)
 {
     if (!WorldContext)
     {
